@@ -1,0 +1,417 @@
+:root {
+    --white: #ffffff;
+    --black: #333461;
+    --gray: #4A556C;
+    --dark-gray: #1E2C30;
+    --accent: #20AD96;
+    --border-light: rgba(0, 0, 0, 0.15);
+    --accent-dark: #218838;
+    --banner-bg: #FAF8F6;
+    --error: #ff4444;
+}
+
+[data-theme="dark"] {
+    --white: #1a1a1a;
+    --black: #E5E7EB;
+    --gray: #D1D5DB;
+    --dark-gray: #0d1618;
+    --accent: #20AD96;
+    --border-light: rgba(255, 255, 255, 0.15);
+    --accent-dark: #218838;
+    --banner-bg: #2A3538;
+    --error: #ff6666;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+}
+
+.catalog {
+    padding: 2rem 1rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: var(--white);
+}
+
+.catalog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 5rem 2rem;
+    
+}
+
+.search input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 200px;
+    color: var(--black);
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: var(--white);
+}
+
+.search input::placeholder {
+    color: var(--gray);
+}
+
+.filter, .sort, .price-filter, .admin-add {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.price-filter-label {
+    color: var(--black);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filter select, .sort select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    color: var(--black);
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: var(--white);
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    appearance: menulist;
+}
+
+.filter select option, .sort select option {
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.price-filter {
+    position: relative;
+}
+
+.price-filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.price-filter:hover .price-filter-dropdown {
+    display: block;
+}
+
+.price-filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 200px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--black);
+}
+
+.form-group input {
+    padding: 0.3rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 100%;
+    color: var(--black);
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: var(--white);
+}
+
+.price-filter-form button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.price-filter-form #apply-price-filter {
+    background-color: var(--accent);
+    color: white;
+}
+
+
+.price-filter-form #reset-price-filter {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+
+.ellipsis {
+    padding: 0 8px;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 150px; /* Фиксированная высота изображения */
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Изображение заполняет контейнер */
+    object-position: center;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 320px; /* Фиксированная максимальная ширина */
+    height: 400px; /* Фиксированная высота карточки */
+}
+
+.card_text {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    flex-grow: 1; /* Занимает доступное пространство */
+    position: relative; /* Для позиционирования дочерних элементов */
+    height: 250px; /* Фиксированная высота для текста */
+}
+
+.card_text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 8px;
+    line-height: 1.3;
+    min-height: 2.6em; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.card_text .type {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 8px;
+}
+
+.card_text .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em; /* 3 строки при line-height: 1.5em */
+    line-height: 1.5em;
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 8px;
+    flex-grow: 1; /* Растягивается, чтобы занять оставшееся пространство */
+}
+
+.card_text .price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: auto; /* Прижимает к низу */
+}
+
+
+.card_text .add-to-cart,
+.card_text .delete-product {
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.card_text .add-to-cart img,
+.card_text .delete-product img {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background: var(--white);
+    cursor: pointer;
+    color: var(--black);
+}
+
+.pagination button.active {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .ellipsis {
+    padding: 0.5rem;
+    color: var(--gray);
+}
+
+.admin-add button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--accent);
+    color: white;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-add button:hover {
+    background-color: var(--accent-dark);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Kumbh Sans', sans-serif;
+    color: var(--black);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.modal-content p {
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modal-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+#modal-confirm {
+    background-color: var(--accent);
+    color: white;
+}
+
+#modal-confirm:hover {
+    background-color: var(--accent-dark);
+}
+
+#modal-cancel {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+#modal-cancel:hover {
+    background-color: var(--gray);
+}
+
+
+@media (max-width: 400px) {
+    .cards {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 0;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 285px;
+    }
+}
+
+@media (max-width: 700px) {
+    .catalog-controls 
+    {
+        margin: 0 2rem 2rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
