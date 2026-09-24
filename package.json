@@ -1,0 +1,10 @@
+{
+  "name": "happy-coaching",
+  "version": "1.0.0",
+  "license": "CC-BY-NC-ND-4.0",
+  "author": "Аполлинария Аверченко",
+  "dependencies": {
+    "express": "^5.1.0",
+    "json-server": "^0.17.4"
+  }
+}
